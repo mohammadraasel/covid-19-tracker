@@ -8,6 +8,10 @@ import './app.scss';
 function App() {
   const [parameter, setParameter] = useState("")
   const [ summary, summarylLoading, summaryError ] = useCovid19('https://corona.lmao.ninja/all')
+  let [ countries, countriesLoading ] = useCovid19('https://corona.lmao.ninja/countries')
+  if(countries){
+    countries = countries.map(data=> data.country).sort()
+  }
   let uri = `https://corona.lmao.ninja/countries`
   if(parameter) {
     uri = uri+"/"+parameter
@@ -16,7 +20,6 @@ function App() {
   const [ stats, loading, error ] = useCovid19(uri)
   if (error) return <h1>Error...</h1> 
   let data = !Array.isArray(stats)? [stats] : stats
-  console.log(data)
   return (
     <div className="app">
     
@@ -52,11 +55,12 @@ function App() {
                 <div className="actions-container">
                   <div className="actions">
                     <div className="countries">
+                      <p>Select Country</p>
                       <select  id="countries" onChange={(e)=> setParameter(e.target.value)}>
-                        <option selected value='' >all</option>
-                          {
-                            ['china', 'italy'].map(country=>(
-                              <option key={country} value={country}>{country}</option>
+                        <option value='' >All</option>
+                          { countries &&
+                            countries.map(country=>(
+                              <option key={country} value={country.toLowerCase()}>{country}</option>
                             ))
                           }
                       </select>

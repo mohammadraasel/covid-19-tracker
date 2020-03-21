@@ -1,0 +1,87 @@
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: -5px -5px 15px rgba(#fff, 0.23), 5px 5px 15px rgba(#000, 0.23);
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  h3 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .letf-info {
+    padding: 15px;
+    p {
+      line-height: 30px;
+      white-space: nowrap;
+    }
+    span {
+      padding: 1px 8px;
+      border-radius: 5px;
+    }
+    .confirmed {
+      span {
+        color: orange;
+        background: rgba(255, 166, 0, 0.1);
+      }
+    }
+    .recovered {
+      span {
+        color: rgb(6, 212, 6);
+        background: rgba(4, 245, 4, 0.1);
+      }
+    }
+    .deaths {
+      span {
+        color: red;
+        background: rgba(255, 0, 0, 0.1);
+      }
+    }
+  }
+  .right-info {
+    margin-left: 5px;
+    padding: 15px 10px;
+    > div {
+      margin-bottom: 5px;
+    }
+    .right-info-contents {
+      display: flex;
+      flex-direction: column;
+      // border: 1px solid red;
+      padding: 15px;
+      box-shadow: 0px 1px 5px rgba(#000, 0.13);
+      border-radius: 5px;
+      p {
+        line-height: 30px;
+        white-space: nowrap;
+      }
+
+      span {
+        padding: 1px 8px;
+        border-radius: 5px;
+      }
+      .cases {
+        span {
+          color: orange;
+          background: rgba(255, 166, 0, 0.1);
+        }
+      }
+      .deaths {
+        span {
+          color: red;
+          background: rgba(255, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
