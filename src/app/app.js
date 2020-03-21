@@ -7,7 +7,9 @@ import './app.scss';
 
 function App() {
   const [parameter, setParameter] = useState("")
+  // eslint-disable-next-line no-unused-vars
   const [ summary, summarylLoading, summaryError ] = useCovid19('https://corona.lmao.ninja/all')
+  // eslint-disable-next-line no-unused-vars
   let [ countries, countriesLoading ] = useCovid19('https://corona.lmao.ninja/countries')
   if(countries){
     countries = countries.map(data=> data.country).sort()
@@ -17,14 +19,14 @@ function App() {
     uri = uri+"/"+parameter
   }
 
+  // eslint-disable-next-line no-unused-vars
   const [ stats, loading, error ] = useCovid19(uri)
+  if (summaryError) return <h1>Summary Error...</h1> 
   if (error) return <h1>Error...</h1> 
   let data = !Array.isArray(stats)? [stats] : stats
   return (
     <div className="app">
     
-      {summary === null ? <h3 className='header-container'>Loading...</h3> :
-
         <div className='header-container'>
           <div className="heading-container">
             <h3 className="heading">Global Coronavirus Realtime Tracker</h3>
@@ -35,21 +37,28 @@ function App() {
           </div>
             <div className="contents">
               <div className="summary">
-                  <div className="info">
-                    <div>
-                      <p className="title">Total Confirmed</p>
-                      <p className="data confirmed">{summary.cases}</p>
+                {
+                  summary === null ?  <div className="info">
+                    <h3 style={{padding: '20px'}}>Loading summary...</h3>
+                  </div> : 
+                  <>
+                    <div className="info">
+                      <div>
+                        <p className="title">Total Confirmed</p>
+                        <p className="data confirmed">{summary.cases}</p>
+                      </div>
+                      <div>
+                        <p className="title">Total Recovered</p>
+                        <p className="data recovered">{summary.recovered}</p>
+                      </div>
+                      <div>
+                        <p className="title">Total Deaths</p>
+                        <p className="data deaths">{summary.deaths}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="title">Total Recovered</p>
-                      <p className="data recovered">{summary.recovered}</p>
-                    </div>
-                    <div>
-                      <p className="title">Total Deaths</p>
-                      <p className="data deaths">{summary.deaths}</p>
-                    </div>
-                  </div>
-                  <div><strong>Last Update on:</strong> <Moment>{summary.updated}</Moment></div>
+                    <div><strong>Last Update on:</strong> <Moment>{summary.updated}</Moment></div>
+                  </>
+                }
                 </div>
                 
                 <div className="actions-container">
@@ -73,9 +82,10 @@ function App() {
                 </div>
               </div>
             </div>
-      }
       {
-        stats === null ? <h3 className='container'>Loading...</h3> :
+        stats === null ? <div className="container">
+          <h2>Loading...</h2>
+      </div>  :
           <div className='container'>
             <CardList stats={data}/>
           </div>
