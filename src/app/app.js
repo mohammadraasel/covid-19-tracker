@@ -56,7 +56,7 @@ function App() {
                         <p className="data deaths">{summary.deaths}</p>
                       </div>
                     </div>
-                    <div><strong>Last Update on:</strong> <Moment>{summary.updated}</Moment></div>
+                    <div className="update-on"><strong>Last Update on:</strong> <Moment>{summary.updated}</Moment></div>
                   </>
                 }
                 </div>
