@@ -8,25 +8,25 @@ import './app.scss';
 function App() {
   const [parameter, setParameter] = useState("")
   // eslint-disable-next-line no-unused-vars
-  const [ summary, summarylLoading, summaryError ] = useCovid19('https://corona.lmao.ninja/all')
+  const [ summary, summarylLoading, summaryError ] = useCovid19('https://corona.lmao.ninja/v2/all')
   // eslint-disable-next-line no-unused-vars
-  let [ countries, countriesLoading ] = useCovid19('https://corona.lmao.ninja/countries')
+  let [ countries ] = useCovid19('https://corona.lmao.ninja/v2/countries')
   if(countries){
     countries = countries.map(data=> data.country).sort()
   }
-  let uri = `https://corona.lmao.ninja/countries`
+  let uri = `https://corona.lmao.ninja/v2/countries`
   if(parameter) {
     uri = uri+"/"+parameter
   }
 
   // eslint-disable-next-line no-unused-vars
-  const [ stats, loading, error ] = useCovid19(uri)
+  const [ stats, loading, error ] = useCovid19(uri, parameter? {} : { sort: 'cases'})
   if (summaryError) return <h1>Summary Error...</h1> 
   if (error) return <h1>Error...</h1> 
   let data = !Array.isArray(stats)? [stats] : stats
+  
   return (
     <div className="app">
-    
         <div className='header-container'>
           <div className="heading-container">
             <h3 className="heading">Global Coronavirus Realtime Tracker</h3>

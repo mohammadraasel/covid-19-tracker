@@ -1,5 +1,4 @@
 import React from 'react'
-import { countryCodes } from '../../app/codes'
 import './card-list.scss'
 
 export default function CardList(props) {
@@ -9,10 +8,7 @@ export default function CardList(props) {
               props.stats.map((stat, index) => (
                 <div className='card' key={index}>
                   <div className="heading">
-                    {countryCodes[stat.country.toLowerCase()]&&
-                      <img src={`https://www.countryflags.io/${countryCodes[stat.country.toLowerCase()].toLowerCase()}/flat/48.png`} alt="flag"/>
-
-                    }
+                    <img className='flag' src={stat.countryInfo.flag} alt="flag"/>
                     <h3>{stat.country}</h3>
                   </div>
                   <div className="info">
