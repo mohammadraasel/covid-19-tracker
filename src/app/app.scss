@@ -92,23 +92,47 @@
         border: 1px solid red;
         box-shadow: 2px 2px 5px -4px rgba($color: #000000, $alpha: 1);
         display: flex;
-        div {
-          padding: 20px;
-          .title {
-            font-size: 20px;
-          }
-          .data {
-            font-size: 30px;
-            font-weight: bold;
-          }
-          .confirmed {
-            color: orange;
-          }
-          .recovered {
-            color: green;
-          }
-          .deaths {
-            color: red;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: 'Global';
+          position: absolute;
+          display: inline-block;
+          top: 5px;
+          left: -18px;
+          color: white;
+          transform: rotate(-45deg);
+          background: rgba(252, 2, 2, 1);
+          padding: 2px 15px;
+          font-size: 12px;
+        }
+
+        .minor-info {
+          text-align: center;
+          padding-bottom: 10px;
+        }
+        .highlighted {
+          display: flex;
+          div {
+            padding: 20px;
+            .title {
+              font-size: 20px;
+            }
+            .data {
+              font-size: 30px;
+              font-weight: bold;
+            }
+            .confirmed {
+              color: orange;
+            }
+            .recovered {
+              color: green;
+            }
+            .deaths {
+              color: red;
+            }
           }
         }
       }

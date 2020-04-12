@@ -43,20 +43,26 @@ function App() {
                   </div> : 
                   <>
                     <div className="info">
-                      <div>
-                        <p className="title">Total Confirmed</p>
-                        <p className="data confirmed">{summary.cases}</p>
+                      
+                      <div className="highlighted">
+                        <div>
+                          <p className="title">Confirmed</p>
+                          <p className="data confirmed">{summary.cases}</p>
+                        </div>
+                        <div>
+                          <p className="title">Recovered</p>
+                          <p className="data recovered">{summary.recovered}</p>
+                        </div>
+                        <div>
+                          <p className="title">Deaths</p>
+                          <p className="data deaths">{summary.deaths}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="title">Total Recovered</p>
-                        <p className="data recovered">{summary.recovered}</p>
-                      </div>
-                      <div>
-                        <p className="title">Total Deaths</p>
-                        <p className="data deaths">{summary.deaths}</p>
+                      <div className="minor-info">
+                        <span>Countries: {summary.affectedCountries}</span>
                       </div>
                     </div>
-                    <div className="update-on"><strong>Last Update on:</strong> <Moment>{summary.updated}</Moment></div>
+                    <div className="update-on"><strong>Last Update on:</strong> <Moment format="DD-MM-YYYY, HH:mm:ss A">{summary.updated}</Moment></div>
                   </>
                 }
                 </div>
