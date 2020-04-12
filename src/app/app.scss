@@ -266,23 +266,26 @@
         .info {
           margin: 15px 0;
           display: flex;
-          div {
-            padding: 10px;
-            .title {
-              font-size: 15px;
-            }
-            .data {
-              font-size: 20px;
-              font-weight: bold;
-            }
-            .confirmed {
-              color: orange;
-            }
-            .recovered {
-              color: green;
-            }
-            .deaths {
-              color: red;
+          .highlighted {
+            div {
+              padding: 10px;
+              .title {
+                margin-top: 20px;
+                font-size: 15px;
+              }
+              .data {
+                font-size: 20px;
+                font-weight: bold;
+              }
+              .confirmed {
+                color: orange;
+              }
+              .recovered {
+                color: green;
+              }
+              .deaths {
+                color: red;
+              }
             }
           }
         }
@@ -315,23 +318,27 @@
         .info {
           margin: 15px 0;
           display: flex;
-          div {
-            padding: 10px;
-            .title {
-              font-size: 15px;
-            }
-            .data {
-              font-size: 20px;
-              font-weight: bold;
-            }
-            .confirmed {
-              color: orange;
-            }
-            .recovered {
-              color: green;
-            }
-            .deaths {
-              color: red;
+          .highlighted {
+            div {
+              padding: 10px;
+              .title {
+                margin-top: 15px;
+                font-size: 15px;
+                text-align: center;
+              }
+              .data {
+                font-size: 20px;
+                font-weight: bold;
+              }
+              .confirmed {
+                color: orange;
+              }
+              .recovered {
+                color: green;
+              }
+              .deaths {
+                color: red;
+              }
             }
           }
         }
